@@ -15,4 +15,4 @@ export default defineComponent({
     IonRouterOutlet
   }
 });
-</script>
+</script> 
