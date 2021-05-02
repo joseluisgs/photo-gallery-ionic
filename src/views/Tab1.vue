@@ -21,11 +21,7 @@
         <ion-item>
           <ion-icon :icon="logoGithub" slot="start"></ion-icon>
           <ion-label>Mi repositorio de GitHub</ion-label>
-          <ion-button
-            fill="outline"
-            slot="end"
-            >Ver</ion-button
-          >
+          <ion-button fill="outline" slot="end" @click="openWebpage('https://github.com/joseluisgs')">Ver </ion-button>
         </ion-item>
       </ion-card>
     </ion-content>
@@ -76,8 +72,9 @@ export default {
       };
 
       // Opening a URL and returning an InAppBrowserObject
-      const browser = InAppBrowser.create(url, '_self', options);
+      InAppBrowser.create(url, '_self', options);
     }
+
     return {
       logoGithub,
       openWebpage,
