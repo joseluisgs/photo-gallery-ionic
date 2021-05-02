@@ -40,6 +40,8 @@ import {
   IonImg,
 } from '@ionic/vue';
 
+import { usePhotoGallery } from '@/composables/usePhotoGallery';
+
 export default {
   name: 'Tab2',
   // Mis componentes
@@ -52,16 +54,20 @@ export default {
     IonToolbar,
     IonTitle,
     IonContent,
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonImg,
+    // IonGrid,
+    // IonRow,
+    // IonCol,
+    // IonImg,
   },
 
   // Mis setup
   setup() {
+    // Mis datos
+    // Mis funciones
+    const { takePhoto } = usePhotoGallery();
     // Lo que le devulevo
     return {
+      takePhoto,
       camera,
       trash,
       close,
