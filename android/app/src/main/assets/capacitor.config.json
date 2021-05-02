@@ -9,6 +9,5 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {},
-   "linuxAndroidStudioPath": "/snap/bin/intellij-idea-ultimate"
+  "cordova": {}
 }

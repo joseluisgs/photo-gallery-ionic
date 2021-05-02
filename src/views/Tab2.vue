@@ -20,7 +20,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
         <ion-fab-button @click="takePhoto()">
           <ion-icon :icon="camera"></ion-icon>
@@ -49,7 +48,7 @@ import {
   IonImg,
 } from '@ionic/vue';
 
-import { usePhotoGallery, Photo } from '@/composables/usePhotoGallery';
+import { usePhotoGallery } from '@/composables/usePhotoGallery';
 
 export default {
   name: 'Tab2',
