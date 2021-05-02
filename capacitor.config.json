@@ -10,5 +10,5 @@
     }
   },
   "cordova": {},
-   "linuxAndroidStudioPath": "/snap/bin/intellij-idea-ultimate"
+  "linuxAndroidStudioPath": "/snap/bin/intellij-idea-ultimate"
 }

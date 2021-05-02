@@ -30,9 +30,6 @@ export function usePhotoGallery() {
     reader.readAsDataURL(blob);
   });
 
-  // De esta manera siempre que hay un cambio actualiza la cache
-  watch(photos, cachePhotos);
-
   // Cargamos todas las fotos
   const loadSaved = async () => {
     const photoList = await Storage.get({ key: PHOTO_STORAGE });
@@ -61,12 +58,14 @@ export function usePhotoGallery() {
     // Si estamos en Android o iOS
     if (isPlatform('hybrid')) {
       const file = await Filesystem.readFile({
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         path: photo.path!,
       });
       base64Data = file.data;
     // Si estamos en la web
     } else {
       // Tomamos cada foto, como blob y la convertimos en Base64
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const response = await fetch(photo.webPath!);
       const blob = await response.blob();
       base64Data = await convertBlobToBase64(blob) as string;
@@ -108,13 +107,32 @@ export function usePhotoGallery() {
     photos.value = [savedFileImage, ...photos.value];
   };
 
+  // Borra una foto
+  // eslint-disable-next-line no-shadow
+  const deletePhoto = async (photo: Photo) => {
+    // Remove this photo from the Photos reference data array
+    photos.value = photos.value.filter((p) => p.filepath !== photo.filepath);
+
+    // delete photo file from filesystem
+    const filename = photo.filepath.substr(photo.filepath.lastIndexOf('/') + 1);
+    await Filesystem.deleteFile({
+      path: filename,
+      directory: FilesystemDirectory.Data,
+    });
+  };
+
+  // Elementos de Vue
+
   // Cuando nos montamos leemos lo que tenemos en Storage.
   onMounted(loadSaved);
+  // De esta manera siempre que hay un cambio actualiza la cache
+  watch(photos, cachePhotos);
 
   // Lo que devolvemos
   return {
     photos,
     takePhoto,
+    deletePhoto,
   };
 }
 
