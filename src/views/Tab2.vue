@@ -13,8 +13,8 @@
       </ion-header>
 
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button>
-          <ion-icon icon="{camera}"></ion-icon>
+        <ion-fab-button @click="takePhoto()">
+          <ion-icon :icon="camera"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </ion-content>
