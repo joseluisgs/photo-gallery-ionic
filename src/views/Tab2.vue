@@ -63,10 +63,10 @@ export default {
     IonToolbar,
     IonTitle,
     IonContent,
-    // IonGrid,
-    // IonRow,
-    // IonCol,
-    // IonImg,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonImg,
   },
 
   // Mis setup

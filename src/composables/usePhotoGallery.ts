@@ -3,6 +3,7 @@ import {
   Plugins, CameraResultType, CameraSource, CameraPhoto,
   Capacitor, FilesystemDirectory,
 } from '@capacitor/core';
+import { isPlatform } from '@ionic/vue';
 
 export function usePhotoGallery() {
   const { Camera, Filesystem, Storage } = Plugins;
@@ -37,14 +38,18 @@ export function usePhotoGallery() {
     const photoList = await Storage.get({ key: PHOTO_STORAGE });
     const photosInStorage = photoList.value ? JSON.parse(photoList.value) : [];
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const photo of photosInStorage) {
-      // eslint-disable-next-line no-await-in-loop
-      const file = await Filesystem.readFile({
-        path: photo.filepath,
-        directory: FilesystemDirectory.Data,
-      });
-      photo.webviewPath = `data:image/jpeg;base64,${file.data}`;
+    // si se ejecuta en la web
+    if (!isPlatform('hybrid')) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const photo of photosInStorage) {
+        // eslint-disable-next-line no-await-in-loop
+        const file = await Filesystem.readFile({
+          path: photo.filepath,
+          directory: FilesystemDirectory.Data,
+        });
+        // Web platform only: Load the photo as base64 data
+        photo.webviewPath = `data:image/jpeg;base64,${file.data}`;
+      }
     }
 
     photos.value = photosInStorage;
@@ -52,18 +57,34 @@ export function usePhotoGallery() {
 
   // Salva una imagen
   const savePicture = async (photo: CameraPhoto, fileName: string): Promise<Photo> => {
-    let base64Data = '';
-
-    // Fetch the photo, read as a blob, then convert to base64 format
-    const response = await fetch(photo.webPath!);
-    const blob = await response.blob();
-    base64Data = await convertBlobToBase64(blob) as string;
-
+    let base64Data: string;
+    // Si estamos en Android o iOS
+    if (isPlatform('hybrid')) {
+      const file = await Filesystem.readFile({
+        path: photo.path!,
+      });
+      base64Data = file.data;
+    // Si estamos en la web
+    } else {
+      // Tomamos cada foto, como blob y la convertimos en Base64
+      const response = await fetch(photo.webPath!);
+      const blob = await response.blob();
+      base64Data = await convertBlobToBase64(blob) as string;
+    }
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
       directory: FilesystemDirectory.Data,
     });
+
+    if (isPlatform('hybrid')) {
+      // Display the new image by rewriting the 'file://' path to HTTP
+      // Details: https://ionicframework.com/docs/building/webview#file-protocol
+      return {
+        filepath: savedFile.uri,
+        webviewPath: Capacitor.convertFileSrc(savedFile.uri),
+      };
+    }
 
     // Use webPath to display the new image instead of base64 since it's
     // already loaded into memory
