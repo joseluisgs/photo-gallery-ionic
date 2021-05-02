@@ -16,7 +16,7 @@ Aplicación multiplataforma realizada con Vue.js e Ionic. Manejo de cámara y el
   - [Agradecimientos](#agradecimientos)
 
 ## Sobre el proyecto
-Se ha realizado una aplicación multiplataforma usando Vue.js e Ionic. Además, se ha usado llamadas a elementos nativos como la cámara. El objetivo es programar una sola vez y ejecutar en distintas plataforma de la forma más rápida y sencilla posible.
+Se ha realizado una aplicación multiplataforma usando Vue.js e Ionic. Además, se ha usado llamadas a elementos nativos como la cámara. El objetivo es programar una sola vez y ejecutar en distintas plataforma de la forma más rápida y sencilla posible. Las plataformas son Android y Desktop.
 
 ## Autor
 
