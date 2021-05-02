@@ -6,7 +6,7 @@ Aplicación multiplataforma realizada con Vue.js e Ionic. Manejo de cámara y el
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178c6)](https://www.typescriptlang.org/)
 [![JS Style](https://img.shields.io/badge/JS%20Style-AirBnB-ff69b4)](https://airbnb.io/javascript)
 [![Licence](https://img.shields.io/github/license/joseluisgs/photo-gallery-ionic)](./LICENSE)
-![GitHub](https://img.shields.io/github/last-commit/joseluisgs/vue-rest-ts)
+![GitHub](https://img.shields.io/github/last-commit/joseluisgs/photo-gallery-ionic)
 
 - [Photo Gallery Ionic](#photo-gallery-ionic)
   - [Sobre el proyecto](#sobre-el-proyecto)
@@ -17,6 +17,11 @@ Aplicación multiplataforma realizada con Vue.js e Ionic. Manejo de cámara y el
 
 ## Sobre el proyecto
 Se ha realizado una aplicación multiplataforma usando Vue.js e Ionic. Además, se ha usado llamadas a elementos nativos como la cámara. El objetivo es programar una sola vez y ejecutar en distintas plataforma de la forma más rápida y sencilla posible. Las plataformas son Android y Desktop.
+
+![img](./images/img01.png)
+![img](./images/img02.png)
+![img](./images/img03.png)
+![img](./images/img04.png)
 
 ## Autor
 
