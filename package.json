@@ -10,6 +10,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@capacitor-community/electron": "^1.4.2",
     "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.7",
     "@ionic-native/in-app-browser": "^5.32.1",

@@ -11,6 +11,7 @@ Aplicación multiplataforma realizada con Vue.js e Ionic. Manejo de cámara y el
 - [Photo Gallery Ionic](#photo-gallery-ionic)
   - [Sobre el proyecto](#sobre-el-proyecto)
   - [Autor](#autor)
+  - [Ejecución](#ejecución)
     - [Contacto](#contacto)
   - [Licencia](#licencia)
   - [Agradecimientos](#agradecimientos)
@@ -29,6 +30,9 @@ Codificado con :sparkling_heart: por [José Luis González Sánchez](https://twi
 
 [![Twitter](https://img.shields.io/twitter/follow/joseluisgonsan?style=social)](https://twitter.com/joseluisgonsan)
 [![GitHub](https://img.shields.io/github/followers/joseluisgs?style=social)](https://github.com/joseluisgs)
+
+## Ejecución
+
 
 ### Contacto
 <p>
