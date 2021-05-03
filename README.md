@@ -34,6 +34,8 @@ Se ha realizado una aplicación multiplataforma usando Vue.js e Ionic. Además, 
 - Sincronizar con la plataforma: ionic cap sync
 - Abrir Android Studio o ItellIJ: ionic cap open android
 - Abrir Android en modo live serve, desarrollo: ionic cap run android -l --external
+- Docker: docker run -it -p 8080:8080 --rm --name photo-gallery joseluisgs/vphoto-gallery-ionic
+- Docker Compose: docker-compose up -d
 
 
 ## Autor

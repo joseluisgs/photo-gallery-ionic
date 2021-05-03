@@ -1,0 +1,13 @@
+# Indicamos la versión
+version: '3.7'
+
+# Mis servicios
+# Iniciamos los servicios
+services:
+
+   # Client
+  photo-gallery:
+    container_name: "photo-gallery"
+    build: .
+    ports:
+      - 8080:8080
